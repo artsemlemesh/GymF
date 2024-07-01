@@ -15,7 +15,7 @@ const initialState = {
 export const loginUser = createAsyncThunk(
   "auth/login",
   async ({ username, password }) => {
-    const response = await fetch("http://127.0.0.1:8000/login/", {
+    const response = await fetch("https://gymback-fc9d621d2ec1.herokuapp.com/login/", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -35,7 +35,7 @@ export const loginUser = createAsyncThunk(
 );
 
 export const logoutUser = createAsyncThunk("auth/logout", async () => {
-  const response = await fetch("http://127.0.0.1:8000/logout/", {
+  const response = await fetch("https://gymback-fc9d621d2ec1.herokuapp.com/logout/", {
     method: "POST",
     credentials: "include",
   });
@@ -55,7 +55,7 @@ export const fetchUserProfile = createAsyncThunk(
   'auth/fetchUserProfile',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await get('http://127.0.0.1:8000/user-profile/', {
+      const response = await get('https://gymback-fc9d621d2ec1.herokuapp.com/user-profile/', {
         withCredentials: true, // Include credentials for authentication
       });
       return response.data;

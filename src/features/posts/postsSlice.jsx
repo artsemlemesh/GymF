@@ -9,7 +9,7 @@ const initialState = {
 };
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  const response = await fetch("http://127.0.0.1:8000/posts/")
+  const response = await fetch("https://gymback-fc9d621d2ec1.herokuapp.com/posts/")
   const data = await response.json();
   return data;
 
@@ -20,7 +20,7 @@ export const addNewPost = createAsyncThunk(
   "posts/addNewPost",
   async (formData) => {
     const response = await axios.post(
-      "http://127.0.0.1:8000/posts/",
+      "https://gymback-fc9d621d2ec1.herokuapp.com/posts/",
       formData,
       {
         headers: {//important for image upload, or throws an error without it

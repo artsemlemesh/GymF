@@ -27,7 +27,7 @@ const initialState = {
 export const fetchInstructors = createAsyncThunk(
   "schedule/fetchInstructors",
   async () => {
-    const response = await fetch("http://127.0.0.1:8000/instructors/");
+    const response = await fetch("https://gymback-fc9d621d2ec1.herokuapp.com/instructors/");
     const data = await response.json();
     return data;
   }
@@ -36,7 +36,7 @@ export const fetchInstructors = createAsyncThunk(
 export const fetchClasses = createAsyncThunk(
   "schedule/fetchClasses",
   async () => {
-    const response = await fetch("http://127.0.0.1:8000/classes/");
+    const response = await fetch("https://gymback-fc9d621d2ec1.herokuapp.com/classes/");
     const data = await response.json();
     return data;
   }
@@ -45,7 +45,7 @@ export const fetchClasses = createAsyncThunk(
 export const fetchSchedules = createAsyncThunk(
   "schedule/fetchSchedules",
   async () => {
-    const response = await fetch("http://127.0.0.1:8000/schedule/");
+    const response = await fetch("https://gymback-fc9d621d2ec1.herokuapp.com/schedule/");
     const data = await response.json();
     return data;
   }
@@ -56,7 +56,7 @@ export const leaveClass = createAsyncThunk(
   'schedule/leaveClass',
   async (classId, {getState}) => {
     const state = getState()
-    const response = await axios.post(`http://127.0.0.1:8000/schedule/${classId}/leave-class/`, {}, {
+    const response = await axios.post(`https://gymback-fc9d621d2ec1.herokuapp.com/schedule/${classId}/leave-class/`, {}, {
       withCredentials: true,
     })
     return response.data
@@ -67,7 +67,7 @@ export const joinClass = createAsyncThunk(
   async (classId, { getState }) => {
     const state = getState();
     try {
-      const response = await axios.post(`http://127.0.0.1:8000/schedule/${classId}/join-class/`, {}, {
+      const response = await axios.post(`https://gymback-fc9d621d2ec1.herokuapp.com/schedule/${classId}/join-class/`, {}, {
         withCredentials: true,
       });
       return response.data;
