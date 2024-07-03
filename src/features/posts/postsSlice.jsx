@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-// import { client } from "../../app/api/client";
 
 const initialState = {
   posts: [],
@@ -9,10 +8,11 @@ const initialState = {
 };
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  const response = await fetch("https://gymback-fc9d621d2ec1.herokuapp.com/posts/")
+  const response = await fetch(
+    "https://gymback-fc9d621d2ec1.herokuapp.com/posts/"
+  );
   const data = await response.json();
   return data;
-
 });
 
 //NEED TO SET UP BACKEND FOR ADD AND FETCH, also add user
@@ -23,9 +23,11 @@ export const addNewPost = createAsyncThunk(
       "https://gymback-fc9d621d2ec1.herokuapp.com/posts/",
       formData,
       {
-        headers: {//important for image upload, or throws an error without it
+        headers: {
+          //important for image upload, or throws an error without it
           "Content-Type": "multipart/form-data",
-        },}
+        },
+      }
     );
     return response.data;
   }

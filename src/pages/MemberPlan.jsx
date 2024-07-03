@@ -3,7 +3,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
 import { FaCheck } from "react-icons/fa";
-// import CheckoutForm from './CheckoutForm';
 
 const stripePromise = loadStripe(
   "pk_test_51PLGUYIhhfcmQPRULxV6eXxZHMWqEEW29vQ1FdVwcjE7CevUdT4TnnWVHu15xXC7ZQ7x8CXtXtUbqj3I2zZFlqEn00fS1PbLT0"
@@ -70,9 +69,7 @@ const MembershipPlans = () => {
       >
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl font-bold text-white">Membership Plans</h1>
-          <p className="mt-4 text-white">
-            Choose a plan that fits your needs.
-          </p>
+          <p className="mt-4 text-white">Choose a plan that fits your needs.</p>
         </div>
       </header>
       <div className="flex flex-wrap -mx-2 mt-8">

@@ -7,11 +7,11 @@ const BMIComponent = () => {
     weight: "",
     height: "",
     bmi: null,
-    bmiLevel: null
+    bmiLevel: null,
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) =>  ({
+    setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
@@ -25,15 +25,15 @@ const BMIComponent = () => {
         (heightInMeters * heightInMeters)
       ).toFixed(2);
 
-      let bmiLevel = '';
+      let bmiLevel = "";
       if (calculatedBMI < 18.5) {
-        bmiLevel = 'Underweight';
+        bmiLevel = "Underweight";
       } else if (calculatedBMI >= 18.5 && calculatedBMI <= 24.9) {
-        bmiLevel = 'Normal weight';
+        bmiLevel = "Normal weight";
       } else if (calculatedBMI >= 25 && calculatedBMI <= 29.9) {
-        bmiLevel = 'Overweight';
+        bmiLevel = "Overweight";
       } else {
-        bmiLevel = 'Obesity';
+        bmiLevel = "Obesity";
       }
 
       setFormData((prevFormData) => ({
@@ -90,15 +90,24 @@ const BMIComponent = () => {
             Calculate
           </button>
           {formData.bmi && (
-  <div className="mt-6 text-center">
-    <p className="text-2xl font-bold inline-block mr-4">Your BMI:</p>
-    <p className="text-xl inline-block mr-4">{formData.bmi}</p>
-    <p className={`text-xl inline-block ${formData.bmiLevel === 'Underweight' ? 'text-yellow-500' : formData.bmiLevel === 'Normal weight' ? 'text-green-500' : formData.bmiLevel === 'Overweight' ? 'text-yellow-500' : 'text-red-500'}`}>
-      {formData.bmiLevel}
-    </p>
-  </div>
-)}
-
+            <div className="mt-6 text-center">
+              <p className="text-2xl font-bold inline-block mr-4">Your BMI:</p>
+              <p className="text-xl inline-block mr-4">{formData.bmi}</p>
+              <p
+                className={`text-xl inline-block ${
+                  formData.bmiLevel === "Underweight"
+                    ? "text-yellow-500"
+                    : formData.bmiLevel === "Normal weight"
+                    ? "text-green-500"
+                    : formData.bmiLevel === "Overweight"
+                    ? "text-yellow-500"
+                    : "text-red-500"
+                }`}
+              >
+                {formData.bmiLevel}
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

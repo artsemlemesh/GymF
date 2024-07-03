@@ -41,23 +41,7 @@ const About = () => {
       <Trainers/>
      
       
-      {/* <section>
-        <h2 className="text-3xl font-bold mb-4">Testimonials</h2>
-        <div className="space-y-4">
-          <div className="rounded overflow-hidden shadow-lg bg-white p-6">
-            <p className="text-gray-700 text-base mb-4">"This gym has everything I need. The equipment is top-notch and the trainers are incredibly helpful."</p>
-            <p className="text-gray-700 font-bold">- Sarah Johnson</p>
-          </div>
-          <div className="rounded overflow-hidden shadow-lg bg-white p-6">
-            <p className="text-gray-700 text-base mb-4">"I love the group classes here. They keep me motivated and I always have a great time."</p>
-            <p className="text-gray-700 font-bold">- Mark Lee</p>
-          </div>
-          <div className="rounded overflow-hidden shadow-lg bg-white p-6">
-            <p className="text-gray-700 text-base mb-4">"The facilities are clean and well-maintained. It's the best gym I've ever been a member of."</p>
-            <p className="text-gray-700 font-bold">- Emma Davis</p>
-          </div>
-        </div>
-      </section> */}
+      ƒ
       <Testimonials/>
     </div>
   );

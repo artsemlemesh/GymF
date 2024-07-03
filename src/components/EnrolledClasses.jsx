@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-// import {fetchEnrolledClasses} from '../features/schedule/enrolledClassSlice'
 import { useEffect } from "react";
 import { fetchSchedules, leaveClass } from "../features/schedule/scheduleSlice";
 import { useNavigate } from "react-router-dom";
@@ -25,16 +24,12 @@ const EnrolledClasses = () => {
   const enrolledClasses = schedules.filter((schedule) =>
     schedule.enrolled_participants.includes(user.id)
   );
- 
-
 
   const handleLeaveClass = (classId) => {
-    dispatch(leaveClass(classId)).then(()=> {
-      dispatch(fetchSchedules()) //refreshes the schedule after leaving the class
-    })
-
-  }
-
+    dispatch(leaveClass(classId)).then(() => {
+      dispatch(fetchSchedules()); //refreshes the schedule after leaving the class
+    });
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -59,7 +54,10 @@ const EnrolledClasses = () => {
                 <strong>Coach:</strong>{" "}
                 {classItem.class_instance.instructor.user.username}
               </p>
-              <button onClick={() => handleLeaveClass(classItem.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              <button
+                onClick={() => handleLeaveClass(classItem.id)}
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              >
                 Leave Class
               </button>
             </div>

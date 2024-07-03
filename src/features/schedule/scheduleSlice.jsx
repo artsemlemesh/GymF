@@ -19,15 +19,12 @@ const initialState = {
   },
 };
 
-
-
-
-
-
 export const fetchInstructors = createAsyncThunk(
   "schedule/fetchInstructors",
   async () => {
-    const response = await fetch("https://gymback-fc9d621d2ec1.herokuapp.com/instructors/");
+    const response = await fetch(
+      "https://gymback-fc9d621d2ec1.herokuapp.com/instructors/"
+    );
     const data = await response.json();
     return data;
   }
@@ -36,7 +33,9 @@ export const fetchInstructors = createAsyncThunk(
 export const fetchClasses = createAsyncThunk(
   "schedule/fetchClasses",
   async () => {
-    const response = await fetch("https://gymback-fc9d621d2ec1.herokuapp.com/classes/");
+    const response = await fetch(
+      "https://gymback-fc9d621d2ec1.herokuapp.com/classes/"
+    );
     const data = await response.json();
     return data;
   }
@@ -45,39 +44,50 @@ export const fetchClasses = createAsyncThunk(
 export const fetchSchedules = createAsyncThunk(
   "schedule/fetchSchedules",
   async () => {
-    const response = await fetch("https://gymback-fc9d621d2ec1.herokuapp.com/schedule/");
+    const response = await fetch(
+      "https://gymback-fc9d621d2ec1.herokuapp.com/schedule/"
+    );
     const data = await response.json();
     return data;
   }
 );
 
-
 export const leaveClass = createAsyncThunk(
-  'schedule/leaveClass',
-  async (classId, {getState}) => {
-    const state = getState()
-    const response = await axios.post(`https://gymback-fc9d621d2ec1.herokuapp.com/schedule/${classId}/leave-class/`, {}, {
-      withCredentials: true,
-    })
-    return response.data
+  "schedule/leaveClass",
+  async (classId, { getState }) => {
+    const state = getState();
+    const response = await axios.post(
+      `https://gymback-fc9d621d2ec1.herokuapp.com/schedule/${classId}/leave-class/`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
+    return response.data;
   }
-)
+);
 export const joinClass = createAsyncThunk(
-  'schedule/joinClass',
+  "schedule/joinClass",
   async (classId, { getState }) => {
     const state = getState();
     try {
-      const response = await axios.post(`https://gymback-fc9d621d2ec1.herokuapp.com/schedule/${classId}/join-class/`, {}, {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        `https://gymback-fc9d621d2ec1.herokuapp.com/schedule/${classId}/join-class/`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
       return response.data;
     } catch (error) {
-      throw new Error(`Failed to join class: ${error.response ? error.response.data : error.message}`);
+      throw new Error(
+        `Failed to join class: ${
+          error.response ? error.response.data : error.message
+        }`
+      );
     }
   }
 );
-
-
 
 const scheduleSlice = createSlice({
   name: "schedule",
@@ -119,12 +129,11 @@ const scheduleSlice = createSlice({
         state.schedules.error = action.error.message;
       })
       .addCase(leaveClass.fulfilled, (state, action) => {
-        state.schedules.status = 'succeeded'
+        state.schedules.status = "succeeded";
       })
-      .addCase(joinClass.fulfilled, (state, action)=>{
-        state.schedules.status = 'succeeded'
-      })
-      ;
+      .addCase(joinClass.fulfilled, (state, action) => {
+        state.schedules.status = "succeeded";
+      });
   },
 });
 

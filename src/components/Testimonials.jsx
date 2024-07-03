@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const testimonials = [
   {
     id: 1,
     name: "Jane Doe",
     text: "Joining the gym was one of the best decisions of my life. The personal trainers are fantastic and truly tailor the sessions to individual needs.",
-    role: "Fitness Enthusiast"
+    role: "Fitness Enthusiast",
   },
   {
     id: 2,
     name: "John Smith",
     text: "The facilities at this gym are top-notch, and the community is incredibly welcoming. I've made great progress and friends here!",
-    role: "Member"
+    role: "Member",
   },
   {
     id: 3,
     name: "Emily Johnson",
     text: "I love the variety of equipment and classes available. There's something for everyone, and I never get bored!",
-    role: "Athlete"
-  }
+    role: "Athlete",
+  },
 ];
 
 const Testimonials = () => {
@@ -29,22 +29,32 @@ const Testimonials = () => {
   };
 
   const handlePrev = () => {
-    setIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
+    setIndex(
+      (prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length
+    );
   };
 
-  useEffect(()=> {
-    const intervalId = setInterval(handleNext, 3000)
-    return () => clearInterval(intervalId)
-  })
+  useEffect(() => {
+    const intervalId = setInterval(handleNext, 3000);
+    return () => clearInterval(intervalId);
+  });
 
   return (
     <div className="bg-gray-100 py-12">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-6">What Our Members Say</h2>
+        <h2 className="text-3xl font-bold text-center mb-6">
+          What Our Members Say
+        </h2>
         <div className="relative overflow-hidden">
-          <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${index * 100}%)` }}>
+          <div
+            className="flex transition-transform duration-500"
+            style={{ transform: `translateX(-${index * 100}%)` }}
+          >
             {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="min-w-full flex justify-center">
+              <div
+                key={testimonial.id}
+                className="min-w-full flex justify-center"
+              >
                 <div className="max-w-lg w-full bg-white rounded-lg shadow-lg p-8 text-center">
                   <p className="text-gray-800 text-xl">{testimonial.text}</p>
                   <div className="mt-4">

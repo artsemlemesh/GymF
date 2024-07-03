@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -20,7 +20,7 @@ const Contact = () => {
     // Handle form submission logic (e.g., send data to backend)
     console.log(formData);
     // Reset form
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (
@@ -37,7 +37,9 @@ const Contact = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="rounded overflow-hidden shadow-lg bg-white p-6 text-center">
             <h3 className="font-bold text-xl mb-2">Address</h3>
-            <p className="text-gray-700 text-base">123 Gym Street, Fitness City, FG 12345</p>
+            <p className="text-gray-700 text-base">
+              123 Gym Street, Fitness City, FG 12345
+            </p>
           </div>
           <div className="rounded overflow-hidden shadow-lg bg-white p-6 text-center">
             <h3 className="font-bold text-xl mb-2">Phone</h3>
@@ -54,7 +56,12 @@ const Contact = () => {
         <h2 className="text-3xl font-bold mb-4">Send Us a Message</h2>
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">Name</label>
+            <label
+              htmlFor="name"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Name
+            </label>
             <input
               type="text"
               id="name"
@@ -66,7 +73,12 @@ const Contact = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+            <label
+              htmlFor="email"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -78,7 +90,12 @@ const Contact = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2">Message</label>
+            <label
+              htmlFor="message"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Message
+            </label>
             <textarea
               id="message"
               name="message"

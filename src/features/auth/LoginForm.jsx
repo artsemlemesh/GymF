@@ -11,10 +11,6 @@ const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-
-
-
-  
   const handleLogin = async (e) => {
     e.preventDefault();
     dispatch(loginUser({ username, password }));
@@ -38,7 +34,10 @@ const LoginForm = () => {
           <form onSubmit={handleLogin} className="space-y-4">
             <h2 className="text-xl font-bold text-center">Login</h2>
             {error && (
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+              <div
+                className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                role="alert"
+              >
                 {error}
               </div>
             )}

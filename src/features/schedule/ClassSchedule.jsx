@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchInstructors, fetchClasses, fetchSchedules } from "./scheduleSlice";
-
+import {
+  fetchInstructors,
+  fetchClasses,
+  fetchSchedules,
+} from "./scheduleSlice";
 
 //no need to use, replaced by SingleClass component with prpos which is being used in Days
 const ScheduleComponent = () => {
@@ -18,9 +21,7 @@ const ScheduleComponent = () => {
 
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
-      <div className="h-48 bg-cover bg-center">
-        schedule Component
-      </div>
+      <div className="h-48 bg-cover bg-center">schedule Component</div>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">
           <ul>
@@ -34,8 +35,8 @@ const ScheduleComponent = () => {
           <ul>
             {schedule.data.map((sched) => (
               <li key={sched.id}>
-                {sched.class_instance.name} - {sched.date} - {sched.start_time} to{" "}
-                {sched.end_time}
+                {sched.class_instance.name} - {sched.date} - {sched.start_time}{" "}
+                to {sched.end_time}
               </li>
             ))}
           </ul>

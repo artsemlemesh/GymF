@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import axios from 'axios';
+import React, { useState } from "react";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import axios from "axios";
 
-const CheckoutForm = ({ plan }) => {
+const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
@@ -12,23 +12,23 @@ const CheckoutForm = ({ plan }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!stripe){
-      return
+    if (!stripe) {
+      return;
     }
 
     setLoading(true);
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/create-payment-intent/')
-      const clientSecret = response.data.clientSecret
-      // console.log(response, 'RESPONSE')
-      // console.log(clientSecret, 'CLIENT SECRET')
+      const response = await axios.post(
+        "https://gymback-fc9d621d2ec1.herokuapp.com/create-payment-intent/"
+      );
+      const clientSecret = response.data.clientSecret;
 
       const payload = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
           billing_details: {
-            name: 'Customer Name',
+            name: "Customer Name",
           },
         },
       });
@@ -54,10 +54,12 @@ const CheckoutForm = ({ plan }) => {
         disabled={!stripe || loading || succeeded}
         className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full transition mt-4"
       >
-        {loading ? 'Processing...' : 'Pay'}
+        {loading ? "Processing..." : "Pay"}
       </button>
       {error && <div className="text-red-500 mt-4">{error}</div>}
-      {succeeded && <div className="text-green-500 mt-4">Payment succeeded!</div>}
+      {succeeded && (
+        <div className="text-green-500 mt-4">Payment succeeded!</div>
+      )}
     </form>
   );
 };

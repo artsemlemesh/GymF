@@ -4,7 +4,7 @@ import { Spinner } from "../../components/Spinner";
 import { fetchPosts } from "./postsSlice";
 import { useNavigate } from "react-router-dom";
 
-const PostsList = ({activePost, setActivePost}) => {
+const PostsList = ({ activePost, setActivePost }) => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.posts);
   const postStatus = useSelector((state) => state.posts.status);
@@ -12,26 +12,22 @@ const PostsList = ({activePost, setActivePost}) => {
   const navigate = useNavigate();
   const postRefs = useRef([]);
 
-  
+  postRefs.current = posts.map((_, i) => postRefs.current[i] ?? createRef());
 
-  
-  postRefs.current = posts.map((_, i) => postRefs.current[i] ?? createRef())
-
-  console.log(postRefs, 'POSTREFS')
-  console.log(posts, 'posts')
-
-  
   useEffect(() => {
     if (postStatus === "idle") {
       dispatch(fetchPosts());
     }
   }, [postStatus, dispatch]);
 
-
   useEffect(() => {
     const handleScroll = () => {
-      const positions = postRefs.current.map(ref => ref.current.getBoundingClientRect().top);
-      const index = positions.findIndex(pos => pos >= 0 && pos <= window.innerHeight / 2);
+      const positions = postRefs.current.map(
+        (ref) => ref.current.getBoundingClientRect().top
+      );
+      const index = positions.findIndex(
+        (pos) => pos >= 0 && pos <= window.innerHeight / 2
+      );
       if (index !== -1 && posts[index] && activePost !== posts[index].id) {
         setActivePost(posts[index].id);
       }
@@ -44,7 +40,6 @@ const PostsList = ({activePost, setActivePost}) => {
     navigate("/payment");
   };
 
- 
   let content;
 
   if (postStatus === "loading") {
@@ -52,7 +47,7 @@ const PostsList = ({activePost, setActivePost}) => {
   } else if (postStatus === "succeeded") {
     content = posts.map((post, index) => (
       <div
-      ref={postRefs.current[index]}
+        ref={postRefs.current[index]}
         key={index}
         className="col-span-1 lg:col-span-2 max-w-full rounded overflow-hidden shadow-lg mb-8 flex flex-col"
       >

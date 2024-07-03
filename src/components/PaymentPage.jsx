@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PaymentPage = () => {
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState("");
   const navigate = useNavigate();
 
   const handlePayment = (event) => {
     event.preventDefault();
     // optionally integrate with the payment API
-    console.log('Processing payment for:', amount);
-    navigate('/success');
-    
+    console.log("Processing payment for:", amount);
+    navigate("/success");
   };
 
   return (
@@ -18,7 +17,10 @@ const PaymentPage = () => {
       <h1 className="text-xl font-bold mb-4">Payment</h1>
       <form onSubmit={handlePayment} className="w-full max-w-sm">
         <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="amount"
+          >
             Amount
           </label>
           <input

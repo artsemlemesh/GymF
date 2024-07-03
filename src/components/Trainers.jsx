@@ -38,9 +38,7 @@ const Trainers = () => {
                   <h2 className="font-bold text-xl mb-2">
                     Coach: {trainer.user.username}
                   </h2>
-                  <p className="text-gray-700 text-base">
-                    Bio: {trainer.bio}
-                  </p>
+                  <p className="text-gray-700 text-base">Bio: {trainer.bio}</p>
                 </div>
               </div>
             </div>

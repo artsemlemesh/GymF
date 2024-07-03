@@ -1,5 +1,4 @@
-import { Link, Navigate, Outlet, Route, Routes } from "react-router-dom";
-import EnrolledClasses from "../components/EnrolledClasses";
+import { Link, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   return (

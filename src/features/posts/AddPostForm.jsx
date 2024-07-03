@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { postAdded, postUpdated, addNewPost } from "./postsSlice";
+import { addNewPost } from "./postsSlice";
 
 export const AddPostForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [image, setImage] = useState(null)
-  // const [userId, setUserId] = useState('')
+  const [image, setImage] = useState(null);
   const [addRequestStatus, setAddRequestStatus] = useState("idle");
 
   const dispatch = useDispatch();
@@ -21,7 +20,7 @@ export const AddPostForm = () => {
         await dispatch(addNewPost({ title, content, image })).unwrap();
         setTitle("");
         setContent("");
-        setImage('')
+        setImage("");
       } catch (err) {
         console.error("failed to save the post: ", err);
       } finally {
